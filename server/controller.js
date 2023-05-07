@@ -1,4 +1,5 @@
-database = []
+const database = []
+
 module.exports = {
 
     getCompliment: (req, res) => {
@@ -18,6 +19,26 @@ module.exports = {
         let randomRage = rage[randomIndex];
       
         res.status(200).send(randomRage);
+    },
+
+    submitName: (req,res) => {
+        const name = req.body.name
+        
+        const newObj = {
+            name: name,
+        }
+
+        database.push(newObj)
+        
+        res.status(200).send(database)
+    },
+
+    getHelp: (req, res) => {
+        const help = ['Im dying...help me.','Sorry, you\'re not getting help','have you tried listening to Nickelback?','There is nothing that i can do for you','we\'re in the same boat pal :)']
+        let randomIndex = Math.floor(Math.random() * help.length);
+        let randomHelp = help[randomIndex];
+      
+        res.status(200).send(randomHelp);
     }
 
 }
